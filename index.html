@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>КриптоСдача — налог на криптовалюту и 3-НДФЛ за 5 минут</title>
+  <meta name="description" content="Сервис для законного учёта криптовалюты в России. Расчёт НДФЛ методом FIFO, генерация декларации 3-НДФЛ, уведомления о кошельках в ФНС.">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230A0A0A'/><text x='50' y='68' font-family='Arial' font-size='52' font-weight='800' fill='%2322A085' text-anchor='middle'>К</text></svg>">
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="КриптоСдача">
+      <span class="crypto">Крипто</span><span class="sdacha">Сдача</span>
+    </a>
+    <nav class="nav">
+      <a href="services.html" class="nav-link">Услуги</a>
+      <a href="how-it-works.html" class="nav-link">Как работает</a>
+      <a href="pricing.html" class="nav-link">Тарифы</a>
+      <a href="blog.html" class="nav-link">Блог</a>
+      <a href="contacts.html" class="nav-link">Контакты</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#calculator" class="btn btn-primary btn-sm">Рассчитать налог</a>
+      <button class="menu-toggle" aria-label="Меню" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<nav class="mobile-menu">
+  <a href="services.html" class="nav-link">Услуги</a>
+  <a href="how-it-works.html" class="nav-link">Как работает</a>
+  <a href="pricing.html" class="nav-link">Тарифы</a>
+  <a href="blog.html" class="nav-link">Блог</a>
+  <a href="contacts.html" class="nav-link">Контакты</a>
+  <a href="#calculator" class="btn btn-primary btn-lg">Рассчитать налог</a>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="container">
+    <div class="rise">
+      <span class="hero-eyebrow">Готовимся к 1 июля 2026 — обязательное декларирование</span>
+    </div>
+
+    <h1 class="hero-title rise rise-2">
+      Налог с крипты.<br>
+      <span class="accent">За 5 минут.</span>
+    </h1>
+
+    <p class="hero-sub rise rise-3">
+      Загрузите выгрузку с биржи или адрес кошелька — получите готовую
+      декларацию 3-НДФЛ для ФНС. Расчёт по методу FIFO, конвертация
+      по курсу ЦБ, всё по правилам 259-ФЗ и 418-ФЗ.
+    </p>
+
+    <div class="hero-actions rise rise-4">
+      <a href="#calculator" class="btn btn-primary btn-lg">
+        Рассчитать бесплатно
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="how-it-works.html" class="btn btn-ghost btn-lg">Как это работает</a>
+    </div>
+
+    <div class="hero-meta rise rise-5">
+      <div>
+        <div class="stat-num">5 мин</div>
+        <div class="stat-label">от загрузки до готовой декларации</div>
+      </div>
+      <div>
+        <div class="stat-num">22+</div>
+        <div class="stat-label">поддерживаемых бирж и кошельков</div>
+      </div>
+      <div>
+        <div class="stat-num">0 ₽</div>
+        <div class="stat-label">старт без регистрации и оплаты</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CALCULATOR ========== -->
+<section id="calculator" class="section-tight" style="padding-top:0">
+  <div class="container">
+    <div class="calc" data-calculator data-reveal>
+      <div class="sh" style="margin-bottom:24px;max-width:none">
+        <span class="h-eyebrow">Калькулятор</span>
+        <h2 class="h-2" style="margin-top:12px">Сколько вы должны налоговой?</h2>
+      </div>
+      <div class="calc-inner">
+        <div class="calc-fields">
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="buy">Покупка, ₽</label>
+              <input id="buy" type="number" data-buy value="500000" min="0" inputmode="decimal">
+            </div>
+            <div class="calc-field">
+              <label for="sell">Продажа, ₽</label>
+              <input id="sell" type="number" data-sell value="800000" min="0" inputmode="decimal">
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="status">Налоговый статус</label>
+            <select id="status" data-status>
+              <option value="resident">Физлицо — резидент РФ</option>
+              <option value="ip-usn">ИП на УСН «Доходы»</option>
+              <option value="ooo-osn">ООО на ОСН</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-label">Налог к уплате</div>
+          <div class="calc-tax" data-tax>39 000 ₽</div>
+          <div class="calc-detail">
+            <div class="row"><span>Прибыль</span><strong data-profit>300 000 ₽</strong></div>
+            <div class="row"><span>Налоговая база</span><strong data-base>300 000 ₽</strong></div>
+            <div class="row"><span>Ставка</span><strong data-rate>13%</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="disclaimer">
+      Расчёт носит ориентировочный характер. Прогрессивная шкала НДФЛ применяется к крипто-доходам с 2025 года.
+      Точные обязательства зависят от ваших расходов и других доходов за период.
+    </p>
+  </div>
+</section>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section class="section">
+  <div class="container">
+    <div class="sh" data-reveal>
+      <span class="h-eyebrow">Процесс</span>
+      <h2 class="h-2" style="margin-top:12px">Три шага до готовой декларации</h2>
+      <p>Никаких данных банковских карт. Только история сделок через read-only API или CSV-выгрузку.</p>
+    </div>
+    <div class="steps">
+      <div class="step" data-reveal>
+        <div class="step-num">01</div>
+        <h3 class="h-3">Загрузить сделки</h3>
+        <p>API-ключ Binance / Bybit / OKX (только просмотр), CSV-выписка с биржи или адрес on-chain кошелька. Поддерживаем 22+ источников.</p>
+      </div>
+      <div class="step" data-reveal>
+        <div class="step-num">02</div>
+        <h3 class="h-3">Авто-расчёт по ФНС</h3>
+        <p>Метод FIFO. Конвертация по курсу ЦБ на дату операции. Майнинг, стейкинг, эйрдропы и P2P считаются отдельно.</p>
+      </div>
+      <div class="step" data-reveal>
+        <div class="step-num">03</div>
+        <h3 class="h-3">Готовая 3-НДФЛ</h3>
+        <p>PDF + XML для загрузки в личный кабинет ФНС. Шаблон уведомления о зарубежных кошельках к дедлайну 1 июля.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AUDIENCES ========== -->
+<section class="section" style="background:var(--color-surface)">
+  <div class="container">
+    <div class="sh" data-reveal>
+      <span class="h-eyebrow">Решения</span>
+      <h2 class="h-2" style="margin-top:12px">Подходит каждому, у кого есть крипта</h2>
+      <p>От разового трейдера до промышленного майнера и ВЭД-компании.</p>
+    </div>
+    <div class="audience-grid">
+      <a href="services.html#traders" class="audience-card" data-reveal>
+        <span class="tag">Физлица</span>
+        <h3 class="h-3">Трейдеры и инвесторы</h3>
+        <p class="muted">Считаем налог на прибыль от продажи криптовалюты с учётом FIFO и комиссий.</p>
+        <ul>
+          <li>Импорт сделок с биржи или из P2P</li>
+          <li>Декларация 3-НДФЛ за 5 минут</li>
+          <li>Уведомление об иностранных кошельках</li>
+        </ul>
+      </a>
+      <a href="services.html#miners" class="audience-card" data-reveal>
+        <span class="tag">Майнеры</span>
+        <h3 class="h-3">Майнинг — физлица и ИП</h3>
+        <p class="muted">Регистрация в реестре ФНС, ежемесячная отчётность, учёт затрат на электроэнергию.</p>
+        <ul>
+          <li>Шаблоны заявок в МайнингРеестр</li>
+          <li>Учёт по рыночному курсу на дату получения</li>
+          <li>Документы для подтверждения расходов</li>
+        </ul>
+      </a>
+      <a href="services.html#ved" class="audience-card" data-reveal>
+        <span class="tag">B2B</span>
+        <h3 class="h-3">ООО с ВЭД-расчётами в крипте</h3>
+        <p class="muted">С 1 июля 2026 расчёты с нерезидентами по внешнеторговым контрактам разрешены. Помогаем оформить.</p>
+        <ul>
+          <li>Шаблоны договоров и проводок</li>
+          <li>Учёт курсовой разницы</li>
+          <li>Сопровождение бухгалтерии</li>
+        </ul>
+      </a>
+      <a href="services.html#ip" class="audience-card" data-reveal>
+        <span class="tag">ИП на УСН</span>
+        <h3 class="h-3">Индивидуальные предприниматели</h3>
+        <p class="muted">Криптовалюта как товар или предмет деятельности. Учёт по УСН «Доходы» 6% или «Доходы минус расходы» 15%.</p>
+        <ul>
+          <li>Книга учёта доходов и расходов</li>
+          <li>Декларация УСН с криптой</li>
+          <li>Корректное оформление выводов на ИП-счёт</li>
+        </ul>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== KEY DATES ========== -->
+<section class="section">
+  <div class="container">
+    <div class="sh" data-reveal>
+      <span class="h-eyebrow">Дедлайны 2026</span>
+      <h2 class="h-2" style="margin-top:12px">Не пропустите ключевые даты</h2>
+    </div>
+    <div class="dates">
+      <div class="date-card" data-reveal>
+        <div class="date-mark">30 апреля</div>
+        <div class="date-num">3-НДФЛ за 2025</div>
+        <div class="date-desc">Срок подачи декларации о доходах от криптовалюты в ФНС.</div>
+      </div>
+      <div class="date-card" data-reveal>
+        <div class="date-mark">1 июля</div>
+        <div class="date-num">Иностранные кошельки</div>
+        <div class="date-desc">Планируемое начало обязательного уведомления ФНС об открытии зарубежных криптокошельков.</div>
+      </div>
+      <div class="date-card" data-reveal>
+        <div class="date-mark">15 июля</div>
+        <div class="date-num">Уплата налога</div>
+        <div class="date-desc">Крайний срок оплаты НДФЛ по поданной декларации за 2025 год.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EXCHANGES ========== -->
+<section class="section" style="background:var(--color-surface)">
+  <div class="container">
+    <div class="sh" data-reveal>
+      <span class="h-eyebrow">Источники данных</span>
+      <h2 class="h-2" style="margin-top:12px">Импортируем сделки откуда угодно</h2>
+      <p>API или CSV — пошаговые гайды для каждой площадки в личном кабинете.</p>
+    </div>
+    <div class="exchange-grid" data-reveal>
+      <div class="exchange-chip"><span class="em">🟡</span>Binance</div>
+      <div class="exchange-chip"><span class="em">⚫</span>Bybit</div>
+      <div class="exchange-chip"><span class="em">⚪</span>OKX</div>
+      <div class="exchange-chip"><span class="em">🟢</span>KuCoin</div>
+      <div class="exchange-chip"><span class="em">🇷🇺</span>Garantex</div>
+      <div class="exchange-chip"><span class="em">🟦</span>Bitget</div>
+      <div class="exchange-chip"><span class="em">🟧</span>MEXC</div>
+      <div class="exchange-chip"><span class="em">💎</span>TON</div>
+      <div class="exchange-chip"><span class="em">🦊</span>MetaMask</div>
+      <div class="exchange-chip"><span class="em">🔷</span>Ledger</div>
+      <div class="exchange-chip"><span class="em">🟣</span>Phantom</div>
+      <div class="exchange-chip"><span class="em">🔵</span>Trust Wallet</div>
+    </div>
+    <div class="text-center mt-12">
+      <a href="services.html" class="btn btn-soft">Все источники</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRICING TEASER ========== -->
+<section class="section">
+  <div class="container">
+    <div class="sh" data-reveal>
+      <span class="h-eyebrow">Тарифы</span>
+      <h2 class="h-2" style="margin-top:12px">Прозрачные цены. Без скрытых платежей.</h2>
+      <p>От бесплатного калькулятора до полного сопровождения ИП и ООО.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card" data-reveal>
+        <div class="price-tier">Free</div>
+        <div class="price-amount">0 ₽</div>
+        <p class="muted">До 25 транзакций. Базовый расчёт.</p>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Калькулятор НДФЛ</li>
+          <li><span class="check">✓</span> Ручной ввод сделок</li>
+          <li><span class="check">✓</span> PDF-черновик</li>
+        </ul>
+        <a href="pricing.html" class="btn btn-soft" style="margin-top:auto">Начать</a>
+      </div>
+      <div class="price-card" data-reveal>
+        <div class="price-tier">Personal</div>
+        <div class="price-amount">1 990 ₽<small>/год</small></div>
+        <p class="muted">До 1 000 транзакций. Для пассивных инвесторов.</p>
+        <ul class="price-features">
+          <li><span class="check">✓</span> API + CSV-импорт</li>
+          <li><span class="check">✓</span> Готовая 3-НДФЛ (PDF + XML)</li>
+          <li><span class="check">✓</span> Уведомление о кошельках</li>
+        </ul>
+        <a href="pricing.html" class="btn btn-soft" style="margin-top:auto">Выбрать</a>
+      </div>
+      <div class="price-card featured" data-reveal>
+        <span class="price-badge">Хит</span>
+        <div class="price-tier">Trader</div>
+        <div class="price-amount">4 990 ₽<small>/год</small></div>
+        <p class="muted">До 50 000 транзакций. Для активных трейдеров.</p>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Всё из Personal</li>
+          <li><span class="check">✓</span> P2P + on-chain кошельки</li>
+          <li><span class="check">✓</span> Майнинг и стейкинг</li>
+        </ul>
+        <a href="pricing.html" class="btn btn-primary" style="margin-top:auto">Выбрать</a>
+      </div>
+      <div class="price-card" data-reveal>
+        <div class="price-tier">Pro / ИП</div>
+        <div class="price-amount">14 900 ₽<small>/год</small></div>
+        <p class="muted">Без лимита. Для ИП, ООО и майнеров.</p>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Всё из Trader</li>
+          <li><span class="check">✓</span> Выгрузка в 1С</li>
+          <li><span class="check">✓</span> Поддержка юриста</li>
+        </ul>
+        <a href="pricing.html" class="btn btn-soft" style="margin-top:auto">Выбрать</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ARTICLES TEASER ========== -->
+<section class="section" style="background:var(--color-surface)">
+  <div class="container">
+    <div class="sh" data-reveal>
+      <span class="h-eyebrow">Знание</span>
+      <h2 class="h-2" style="margin-top:12px">Свежие материалы</h2>
+      <p>Разборы законов, кейсы и пошаговые гайды от наших экспертов.</p>
+    </div>
+    <div class="article-grid">
+      <a href="blog.html" class="article-card" data-reveal>
+        <div class="article-meta">
+          <span class="tag">Закон</span>
+          <span>12 мая 2026</span>
+        </div>
+        <h3 class="article-title">Закон «О цифровой валюте» — что изменится с 1 июля 2026</h3>
+        <p class="article-excerpt">Разбор пакета законопроектов, принятых в первом чтении. Что разрешат, а что запретят.</p>
+        <span class="article-read">Читать →</span>
+      </a>
+      <a href="blog.html" class="article-card" data-reveal>
+        <div class="article-meta">
+          <span class="tag">3-НДФЛ</span>
+          <span>08 мая 2026</span>
+        </div>
+        <h3 class="article-title">Как заполнить 3-НДФЛ при выводе с Binance на Тинькофф</h3>
+        <p class="article-excerpt">Пошаговый гайд: где брать курс, как отчитаться по P2P, как избежать вопросов по 115-ФЗ.</p>
+        <span class="article-read">Читать →</span>
+      </a>
+      <a href="blog.html" class="article-card" data-reveal>
+        <div class="article-meta">
+          <span class="tag">Майнинг</span>
+          <span>02 мая 2026</span>
+        </div>
+        <h3 class="article-title">МайнингРеестр ФНС: документы и сроки в 2026 году</h3>
+        <p class="article-excerpt">Какие документы готовить, как считать налог по рыночной котировке и где брать справочный курс.</p>
+        <span class="article-read">Читать →</span>
+      </a>
+    </div>
+    <div class="text-center mt-12">
+      <a href="blog.html" class="btn btn-ghost">Все статьи</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="section">
+  <div class="container container-narrow">
+    <div class="sh" data-reveal>
+      <span class="h-eyebrow">Частые вопросы</span>
+      <h2 class="h-2" style="margin-top:12px">Отвечаем коротко и по делу</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item">
+        <button class="faq-question">Вы получаете доступ к моим деньгам или ключам?</button>
+        <div class="faq-answer">Нет. Мы работаем только с read-only API и CSV-выгрузками. Вывод средств, торговля и любые операции с активами через наш сервис недоступны технически.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Где хранятся мои данные?</button>
+        <div class="faq-answer">Серверы расположены на территории РФ в соответствии с 152-ФЗ. Мы зарегистрированы как оператор персональных данных в Роскомнадзоре.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Вы передаёте данные в ФНС или банки?</button>
+        <div class="faq-answer">Нет. Мы помогаем подготовить документы — отправляете их в ФНС вы сами через личный кабинет налогоплательщика или Госуслуги.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Можно ли подавать декларацию через ИП на УСН?</button>
+        <div class="faq-answer">Да. ИП на УСН могут покупать и продавать криптовалюту, но не могут заниматься майнингом. Для майнинга нужна ОСН. Отчёт сдаётся вместе с декларацией УСН.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Что если я опоздаю с декларацией?</button>
+        <div class="faq-answer">Штраф 5% от суммы налога за каждый месяц просрочки, минимум 1 000 ₽. За неуплату налога — 20% или 40% от суммы плюс пени. Лучше подать вовремя.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Поддерживаете ли вы Garantex и P2P-сделки?</button>
+        <div class="faq-answer">Да. У Garantex доступен CSV-импорт. P2P-сделки можно загрузить выгрузкой с биржи или вручную через таблицу с автоматическим пересчётом по курсу ЦБ.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA BANNER ========== -->
+<section class="section-tight">
+  <div class="container">
+    <div class="cta-banner" data-reveal>
+      <h2 class="h-2">Готовы перестать бояться ФНС?</h2>
+      <p>Бесплатный калькулятор без регистрации. Введите данные — получите налог за 30 секунд.</p>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+        <a href="#calculator" class="btn btn-primary btn-lg">Открыть калькулятор</a>
+        <a href="contacts.html" class="btn btn-ghost btn-lg" >Связаться с нами</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="crypto">Крипто</span><span class="sdacha">Сдача</span>
+        </a>
+        <p class="footer-tagline">
+          Сервис для законного учёта криптовалюты в России.
+          Расчёт НДФЛ, декларации, уведомления — всё по правилам ФНС.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <ul>
+          <li><a href="services.html#calc">Калькулятор НДФЛ</a></li>
+          <li><a href="services.html#declaration">Декларация 3-НДФЛ</a></li>
+          <li><a href="services.html#wallets">Уведомления о кошельках</a></li>
+          <li><a href="services.html#miners">Для майнеров</a></li>
+          <li><a href="services.html#ved">Для ВЭД-ООО</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Компания</h4>
+        <ul>
+          <li><a href="how-it-works.html">Как работает</a></li>
+          <li><a href="pricing.html">Тарифы</a></li>
+          <li><a href="blog.html">Блог</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="mailto:info@criptosdacha.ru">info@criptosdacha.ru</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-socials">
+        <a href="#" class="footer-social">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.7 15.2l-.4 4.1c.5 0 .8-.2 1.1-.5l2.6-2.4 5.4 3.9c1 .5 1.7.3 2-1L23 4.9c.3-1.6-.6-2.2-1.6-1.9L2.6 10.4c-1.5.6-1.5 1.4-.3 1.8l4.7 1.5L18.5 7c.5-.3 1-.1.6.2"/></svg>
+          Telegram
+        </a>
+        <a href="#" class="footer-social">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0012 0C5.4 0 .1 5.4.1 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 005.6 1.4c6.5 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.1-3.4-8.3M12 21.8c-1.8 0-3.5-.5-5-1.3l-.4-.2-3.7 1 1-3.6-.2-.4a9.7 9.7 0 01-1.5-5.2c0-5.5 4.4-9.9 9.9-9.9 2.6 0 5.1 1 7 2.9 1.9 1.9 2.9 4.4 2.9 7 0 5.5-4.5 9.9-10 9.9"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:info@criptosdacha.ru" class="footer-social">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg>
+          Email
+        </a>
+        <a href="#" class="footer-social">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2M8 19H5v-9h3v9M6.5 8.3a1.7 1.7 0 110-3.5 1.7 1.7 0 010 3.5M19 19h-3v-4.7c0-2.6-3-2.4-3 0V19h-3v-9h3v1.4c1.4-2.6 6-2.8 6 2.5V19"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="footer-copy">© 2026 КриптоСдача. Не является налоговым консультантом — помогаем считать.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Telegram bubble -->
+<a href="#" class="fab" aria-label="Написать в Telegram">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.7 15.2l-.4 4.1c.5 0 .8-.2 1.1-.5l2.6-2.4 5.4 3.9c1 .5 1.7.3 2-1L23 4.9c.3-1.6-.6-2.2-1.6-1.9L2.6 10.4c-1.5.6-1.5 1.4-.3 1.8l4.7 1.5L18.5 7c.5-.3 1-.1.6.2"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>
