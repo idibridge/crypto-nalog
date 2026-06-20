@@ -38,7 +38,9 @@ crypto-nalog/
 ## Дальнейшая настройка
 
 - `README-search-consoles.md` — подключение Google Search Console и Яндекс.Вебмастера.
-- `README-leads-bot.md` — создание Telegram-бота и бесплатного обработчика
-  заявок (Cloudflare Workers), код обработчика — `leads-bot/worker.js`.
+- Заявки с формы (`/contacts/`) уходят на общий бэкенд `https://casmo.io/api/lead` —
+  тот же бот и тот же Vercel-проект, что обслуживает casmo.io и roka-dfa.io.
+  Никакой отдельной настройки бота под этот сайт не нужно — origin
+  `cryptosdacha.ru` уже разрешён на стороне бэкенда.
 - `privacy/index.html` — политика конфиденциальности (152-ФЗ). Перед
   публикацией внести реквизиты юрлица, когда будет зарегистрировано ООО.

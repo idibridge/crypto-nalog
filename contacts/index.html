@@ -192,9 +192,8 @@
 
 <script src="/js/main.js"></script>
 <script>
-// Заявка с формы уходит в Telegram через бесплатный Cloudflare Worker.
-// После деплоя воркера вставьте сюда его адрес (см. инструкцию в README-leads-bot.md).
-const LEAD_FORM_ENDPOINT = "https://YOUR-WORKER-SUBDOMAIN.workers.dev";
+// Заявка с формы уходит в Telegram через общий бэкенд (тот же, что у casmo.io и roka-dfa.io).
+const LEAD_FORM_ENDPOINT = "https://casmo.io/api/lead";
 
 (function () {
   const form = document.getElementById("leadForm");
@@ -212,17 +211,13 @@ const LEAD_FORM_ENDPOINT = "https://YOUR-WORKER-SUBDOMAIN.workers.dev";
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    if (LEAD_FORM_ENDPOINT.includes("YOUR-WORKER-SUBDOMAIN")) {
-      showStatus("Форма пока не подключена к обработчику. Напишите нам в Telegram или на почту — ссылки справа.", false);
-      return;
-    }
-
     const data = {
+      site: "cryptosdacha",
       name: form.cname.value.trim(),
-      email: form.cemail.value.trim(),
-      topic: form.ctopic.value,
+      contact: form.cemail.value.trim(),
+      direction: form.ctopic.value,
       message: form.cmsg.value.trim(),
-      company: form.company.value, // honeypot, должно быть пустым
+      hp: form.company.value, // honeypot, должно быть пустым
     };
 
     btn.disabled = true;
