@@ -80,7 +80,7 @@
             <label for="cmsg">Опишите ситуацию</label>
             <textarea id="cmsg" name="message" rows="5" placeholder="Например: торгую на Binance и Bybit с 2022 года, нужно подать декларацию за 2025…"></textarea>
           </div>
-          <input type="text" name="company" id="cwebhoneypot" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <input type="text" name="x_extra_field_9k2" id="cwebhoneypot" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <label style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--color-ink-secondary);line-height:1.5">
             <input type="checkbox" required style="margin-top:3px"> Даю согласие на обработку персональных данных в соответствии с <a href="/privacy/" target="_blank" style="color:var(--color-ink);text-decoration:underline">политикой конфиденциальности</a>.
           </label>
@@ -217,7 +217,7 @@ const LEAD_FORM_ENDPOINT = "https://casmo.io/api/lead";
       contact: form.cemail.value.trim(),
       direction: form.ctopic.value,
       message: form.cmsg.value.trim(),
-      hp: form.company.value, // honeypot, должно быть пустым
+      hp: document.getElementById("cwebhoneypot").value, // honeypot, должно быть пустым
     };
 
     btn.disabled = true;
