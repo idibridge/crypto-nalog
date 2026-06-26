@@ -201,8 +201,11 @@ h1, h2, h3, h4 {
   font-weight: 700;
   letter-spacing: -0.03em;
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
+  gap: 10px;
 }
+
+.logo-icon { height: 32px; width: 32px; display: block; flex-shrink: 0; }
 
 .logo .crypto { color: var(--color-ink); }
 .logo .sdacha { color: var(--color-accent-dark); }
@@ -1135,6 +1138,7 @@ h1, h2, h3, h4 {
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 .footer-brand .logo { font-size: 28px; }
+.footer-brand .logo-icon { height: 38px; width: 38px; }
 .footer-brand .logo .crypto { color: white; }
 .footer-tagline {
   margin-top: 20px;
@@ -1666,6 +1670,7 @@ h1, h2, h3, h4 {
 }
 @media (max-width: 480px) {
   .logo { font-size: 18px !important; }
+  .logo-icon { height: 26px !important; width: 26px !important; }
 }
 
 /* ---- Form fields on mobile ---- */
