@@ -202,10 +202,10 @@ h1, h2, h3, h4 {
   letter-spacing: -0.03em;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-.logo-icon { height: 32px; width: 32px; display: block; flex-shrink: 0; }
+.logo-icon { height: 26px; width: 26px; display: block; flex-shrink: 0; object-fit: contain; }
 
 .logo .crypto { color: var(--color-ink); }
 .logo .sdacha { color: var(--color-accent-dark); }
@@ -1138,7 +1138,7 @@ h1, h2, h3, h4 {
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
 }
 .footer-brand .logo { font-size: 28px; }
-.footer-brand .logo-icon { height: 38px; width: 38px; }
+.footer-brand .logo-icon { height: 32px; width: 32px; }
 .footer-brand .logo .crypto { color: white; }
 .footer-tagline {
   margin-top: 20px;
@@ -1670,7 +1670,7 @@ h1, h2, h3, h4 {
 }
 @media (max-width: 480px) {
   .logo { font-size: 18px !important; }
-  .logo-icon { height: 26px !important; width: 26px !important; }
+  .logo-icon { height: 22px !important; width: 22px !important; }
 }
 
 /* ---- Form fields on mobile ---- */
